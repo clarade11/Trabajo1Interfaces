@@ -48,9 +48,9 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="File" />
-        <Menu mnemonicParsing="false" text="Edit" />
-        <Menu mnemonicParsing="false" text="Help" />
+        <Menu fx:id="mFile" mnemonicParsing="false" text="File" />
+        <Menu fx:id="mEdit" mnemonicParsing="false" text="Edit" />
+        <Menu fx:id="mHelp" mnemonicParsing="false" text="Help" />
       </menus>
     </MenuBar>
       <AnchorPane prefHeight="375.0" prefWidth="600.0">
