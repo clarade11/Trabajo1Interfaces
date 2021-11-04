@@ -12,16 +12,14 @@ public class Persona {
 	private LocalDate birthday;
 	private Integer phone;
 
-	public Persona(String firstName, String lastName, String street, String city, Integer postalCode,
-			LocalDate birthday, Integer phone) {
-		super();
+	public Persona(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.street = street;
-		this.city = city;
-		this.postalCode = postalCode;
-		this.birthday = birthday;
-		this.phone = phone;
+		this.street = "";
+		this.city = "";
+		this.postalCode = 0;
+		this.birthday = LocalDate.of(2010, 2, 2);
+		this.phone = 900000000;
 	}
 
 	public Persona() {
