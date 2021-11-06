@@ -10,8 +10,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Persona;
 
@@ -31,8 +33,9 @@ public class AgendaDeContactos extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Agenda");
 		primaryStage.show();
-
+		
 	}
+
 
 	
 }

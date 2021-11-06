@@ -94,9 +94,10 @@
                   <Label fx:id="lTelefono" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
             </GridPane>
-            <Button fx:id="botonNuevo" layoutX="377.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Nuevo" />
-            <Button fx:id="botonEditar" layoutX="455.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Editar" />
+            <Button fx:id="botonNuevo" layoutX="377.0" layoutY="336.0" mnemonicParsing="false" onAction="#crear" prefHeight="25.0" prefWidth="66.0" text="Nuevo" />
+            <Button fx:id="botonEditar" layoutX="455.0" layoutY="336.0" mnemonicParsing="false" onAction="#editar" prefHeight="25.0" prefWidth="66.0" text="Editar" />
             <Button fx:id="botonBorrar" layoutX="531.0" layoutY="336.0" mnemonicParsing="false" onAction="#borrar" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
+            <Button fx:id="botonActualizar" layoutX="297.0" layoutY="336.0" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
          </children>
       </AnchorPane>
   </children>
