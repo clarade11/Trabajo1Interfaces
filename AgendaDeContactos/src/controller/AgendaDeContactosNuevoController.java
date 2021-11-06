@@ -1,19 +1,13 @@
 package controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.Persona;
 
@@ -39,42 +33,41 @@ public class AgendaDeContactosNuevoController {
 	private TextField tfTelefono;
 
 	@FXML
+	private void initialize() {
+		if (AgendaDeContactosController.mod) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			Persona personaNueva = AgendaDeContactosController.personas.get(AgendaDeContactosController.posicionPersonaEnTabla);
+			tfNombre.setText(personaNueva.getFirstName());
+			tfApellido.setText(personaNueva.getLastName());
+			tfCalle.setText(personaNueva.getStreet());
+			tfCiudad.setText(personaNueva.getCity());
+			tfCodigoPostal.setText(String.valueOf(personaNueva.getPostalCode()));
+			tfFecha.setText(personaNueva.getBirthday().format(formatter));
+			tfTelefono.setText(String.valueOf(personaNueva.getPhone()));
+		}
+	}
+	
+	// boton añadir
+	@FXML
 	public void volver() throws IOException {
-		File ruta = new File("./docs/PersonaParaAnadir.txt");
 
-		BufferedWriter fichero = new BufferedWriter(new FileWriter(ruta));
-		try {
-
-			
-			fichero.write(tfNombre.getText());
-			fichero.newLine();
-			fichero.write(tfApellido.getText());
-			fichero.newLine();
-			fichero.write(tfCalle.getText());
-			fichero.newLine();
-			fichero.write(tfCiudad.getText());
-			fichero.newLine();
-			fichero.write(tfCodigoPostal.getText());
-			fichero.newLine();
-			fichero.write(tfFecha.getText());
-			fichero.newLine();
-			fichero.write(tfTelefono.getText());
-			fichero.newLine();
-			fichero.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (null != fichero)
-					fichero.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+		Persona personaNueva = new Persona();
+		personaNueva.setFirstName(tfNombre.getText());
+		personaNueva.setLastName(tfApellido.getText());
+		personaNueva.setStreet(tfCalle.getText());
+		personaNueva.setCity(tfCiudad.getText());
+		personaNueva.setPostalCode(Integer.parseInt(tfCodigoPostal.getText()));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		personaNueva.setBirthday(LocalDate.parse(tfFecha.getText(), formatter));
+		personaNueva.setPhone(Integer.parseInt(tfCodigoPostal.getText()));
+		if (AgendaDeContactosController.mod) {
+			AgendaDeContactosController.personas.set(AgendaDeContactosController.posicionPersonaEnTabla, personaNueva);
+		} else  {
+			AgendaDeContactosController.personas.add(personaNueva);
 		}
 
 		Stage stage = (Stage) this.botonAnadir.getScene().getWindow();
 		stage.close();
-		
 
 	}
 
